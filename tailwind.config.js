@@ -1,5 +1,6 @@
 module.exports = {
   content: ['index.html'],
+  darkMode:'class',//class or media
   theme: {
     container:
     {
