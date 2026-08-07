@@ -2,32 +2,168 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    font-family: 'Inter',sans-serif;
+html{
+
+scroll-behavior:smooth;
+
 }
 
-.navbar-fixed{
-    @apply fixed z-[9999] bg-white bg-opacity-80 backdrop-blur-sm dark:bg-black dark:bg-opacity-50;
-    /* backdrop-filter: blur(5px); */
-    box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+@keyframes float{
+
+0%{
+transform:translateY(0px);
 }
 
-.hamburger-line{
-    @apply w-[30px] h-[3px] my-2 block bg-dark rounded-lg dark:bg-white;
+50%{
+transform:translateY(-20px);
 }
 
-.hamburger-active > span:nth-child(1){
-    @apply rotate-45 ;
+100%{
+transform:translateY(0px);
 }
 
-.hamburger-active > span:nth-child(2){
-    @apply scale-0;
 }
 
-.hamburger-active > span:nth-child(3){
-    @apply -rotate-45 ;
+.animate-float{
+
+animation:float 5s ease-in-out infinite;
+
+}
+.tech-card{
+    @apply rounded-3xl
+    border
+    border-white/10
+    bg-white/5
+    p-8
+    text-center
+    backdrop-blur-xl
+    transition-all
+    duration-500;
 }
 
-#dark-toggle:checked ~ label div.toggle-circle{
-    @apply translate-x-3;
+.tech-card:hover{
+    @apply -translate-y-3
+    border-blue-500
+    shadow-2xl;
+}
+
+.tech-card p{
+    @apply mt-6
+    font-semibold
+    text-white;
+}
+.portfolio-card{
+    @apply overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-500;
+}
+
+.portfolio-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 30px 60px rgba(37,99,235,.25);
+}
+
+.portfolio-image{
+    @apply relative overflow-hidden;
+}
+
+.portfolio-image img{
+    @apply w-full transition duration-700;
+}
+
+.portfolio-card:hover img{
+    transform:scale(1.08);
+}
+
+.portfolio-overlay{
+    @apply absolute inset-0 flex items-center justify-center gap-4 bg-slate-900/70 opacity-0 transition;
+}
+
+.portfolio-card:hover .portfolio-overlay{
+    @apply opacity-100;
+}
+
+.portfolio-overlay a{
+    @apply rounded-xl bg-white px-5 py-3 font-semibold;
+}
+
+.portfolio-tags{
+    @apply mt-6 flex flex-wrap gap-2;
+}
+
+.portfolio-tags span{
+    @apply rounded-full bg-blue-600/20 px-4 py-2 text-sm text-blue-300;
+}
+
+.portfolio-card h3{
+    @apply text-2xl font-bold text-white;
+}
+
+.portfolio-card p{
+    @apply mt-4 leading-8 text-slate-400;
+}
+
+.portfolio-filter{
+    @apply rounded-full border border-white/10 px-6 py-3 text-white transition;
+}
+
+.portfolio-filter:hover,
+.portfolio-filter.active{
+    @apply bg-blue-600 border-blue-600;
+}
+.testimonial-card{
+    @apply rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-3 hover:shadow-2xl;
+}
+
+.blog-card{
+    @apply overflow-hidden rounded-3xl border border-white/10 bg-white/5 transition-all duration-500 hover:-translate-y-3;
+}
+
+.blog-card img{
+    @apply h-64 w-full object-cover;
+}
+
+.blog-card div{
+    @apply p-8;
+}
+
+.blog-card h3{
+    @apply mt-4 text-2xl font-bold text-white;
+}
+
+.blog-card p{
+    @apply mt-4 text-slate-400;
+}
+
+.blog-card a{
+    @apply mt-6 inline-block text-blue-400;
+}
+
+.input-modern{
+    @apply w-full rounded-xl border border-white/10 bg-slate-800 px-5 py-4 text-white outline-none transition focus:border-blue-500;
+}
+
+.contact-item{
+    @apply flex items-center gap-5;
+}
+#cursorGlow{
+
+position:fixed;
+
+width:300px;
+
+height:300px;
+
+border-radius:999px;
+
+pointer-events:none;
+
+background:radial-gradient(circle,
+rgba(59,130,246,.20),
+transparent 70%);
+
+transform:translate(-50%,-50%);
+
+z-index:0;
+
+transition:.08s;
+
 }
